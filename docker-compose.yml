@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    unet:
+        build: './'
+        command: 'python main.py'
+        volumes:
+            - ./data:/work/data
+            - data-m:/data
+        expose:
+            - '8050'
+        restart: always
+        ulimits:
+            memlock: -1
+            stack: 67108864
+        shm_size: '1g'
+volumes: #create named dir and link it to the data folder, so all services can use
+    data-m:
+        driver: local
+        driver_opts:
+            type: "none"
+            device: "${PWD}/data"
+            o: "bind"

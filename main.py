@@ -3,7 +3,6 @@ from data import *
 
 #os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-
 data_gen_args = dict(rotation_range=0.2,
                     width_shift_range=0.05,
                     height_shift_range=0.05,
